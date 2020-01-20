@@ -11,14 +11,15 @@
     "url": "git+https://github.com/baughmann/react-use-queue.git"
   },
   "keywords": [
+    "react",
     "react-native",
-    "sortable",
-    "draggable",
-    "flatlist",
-    "drag",
-    "drop",
-    "sort",
-    "list"
+    "queue",
+    "job",
+    "task",
+    "background",
+    "hook",
+    "use",
+    "usequeue"
   ],
   "author": "Nick Baughman",
   "license": "MIT",
