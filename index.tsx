@@ -27,11 +27,13 @@ export interface IQueue {
   /**
    * @description What happens when the current work queue is empty
    * @param {() => void} callback The function to call when the current queue has been completed
+   * @warning This is semi-reliable at best. Use at your own risk, and contribute if you know a better way to handle it
    */
   onEmpty: (callback: () => void) => void
 
   /**
    * @description Whether or not the queue is currently busy
+   * @warning This is semi-reliable at best. Use at your own risk, and contribute if you know a better way to handle it
    */
   isExecutingTask: boolean
 }
