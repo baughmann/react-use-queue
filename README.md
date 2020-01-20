@@ -27,6 +27,7 @@ Now, you can add tasks:
 ```
 
 You can even add promises and do something with their result:
+
 ```
   Queue.addJob({
     task: () => doSomething().then(result => doSomethingElse(result)),
@@ -34,6 +35,7 @@ You can even add promises and do something with their result:
 ```
 
 You should think about wrapping the `addJob()` function in a promise:
+
 ``` 
   const doSomethingAndReturn = () => {
     return new Promise<string>((resolve, reject) => {
@@ -44,6 +46,7 @@ You should think about wrapping the `addJob()` function in a promise:
   };
 ```
 Which you can then use elsewhere like so...
+
 `const result = await doSomethingAndReturn()`
 
 ### Note
