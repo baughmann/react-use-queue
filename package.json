@@ -1,10 +1,12 @@
 {
   "name": "react-use-queue",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple task queue implementation for React",
-  "main": "index.tsx",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,5 +28,12 @@
   "bugs": {
     "url": "https://github.com/baughmann/react-use-queue/issues"
   },
-  "homepage": "https://github.com/baughmann/react-use-queue#readme"
+  "homepage": "https://github.com/baughmann/react-use-queue#readme",
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1"
+  }
 }

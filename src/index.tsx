@@ -1,4 +1,4 @@
-import {useState, useEffect, useReducer} from 'react';
+import { useState, useEffect, useReducer } from "react";
 
 ///////////////////////////////
 //// Type Definitions
@@ -17,27 +17,25 @@ export interface Job {
  * @description A simple async queue implementation
  */
 export interface IQueue {
-
   /**
    * @description Adds a job to the end of the end of the queue
    * @param {Job} job The Job to be performed when this task is executed
    */
-  addJob: (job: Job) => void,
+  addJob: (job: Job) => void;
 
   /**
    * @description What happens when the current work queue is empty
    * @param {() => void} callback The function to call when the current queue has been completed
    * @warning This is semi-reliable at best. Use at your own risk, and contribute if you know a better way to handle it
    */
-  onEmpty: (callback: () => void) => void
+  onEmpty: (callback: () => void) => void;
 
   /**
    * @description Whether or not the queue is currently busy
    * @warning This is semi-reliable at best. Use at your own risk, and contribute if you know a better way to handle it
    */
-  isExecutingTask: boolean
+  isExecutingTask: boolean;
 }
-
 
 ///////////////////////////////
 //// Reducers
@@ -75,7 +73,6 @@ const isExecutingTaskReducer = (status: boolean, action: boolean) => {
   return action;
 };
 
-
 ///////////////////////////////
 //// Implementation
 ///////////////////////////////
@@ -86,10 +83,10 @@ export default (): IQueue => {
   // whether or not the queue is performing a job
   const [isExecutingTask, setIsExecutingTask] = useReducer(
     isExecutingTaskReducer,
-    false,
+    false
   );
   // the callback to be executed once all jobs are completed
-  const [doneCallback, setDoneCallback] = useState();
+  const [doneCallback, setDoneCallback] = useState<() => void>();
 
   useEffect(() => {
     const func = async () => {
@@ -98,10 +95,10 @@ export default (): IQueue => {
         const job = jobs[0];
 
         await job.task();
-        dispatch({type: ActionType.SHIFT});
+        dispatch({ type: ActionType.SHIFT });
 
-        if (jobs.length === 0) {
-          doneCallback && doneCallback();
+        if (jobs.length === 0 && doneCallback) {
+          doneCallback();
         }
 
         setIsExecutingTask(false);
@@ -112,12 +109,12 @@ export default (): IQueue => {
   }, [jobs, isExecutingTask]);
 
   const addJob = async (job: Job) => {
-    dispatch({type: ActionType.ADD, job});
+    dispatch({ type: ActionType.ADD, job });
   };
 
   const onEmpty = (callback: () => void) => {
     setDoneCallback(callback);
   };
 
-  return {addJob, onEmpty, isExecutingTask};
+  return { addJob, onEmpty, isExecutingTask };
 };
