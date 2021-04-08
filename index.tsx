@@ -24,6 +24,11 @@ export interface IQueue {
    */
   addJob: (job: Job) => void,
 
+   /**
+   * @description Clear jobs
+   */
+  empty: () => void
+
   /**
    * @description What happens when the current work queue is empty
    * @param {() => void} callback The function to call when the current queue has been completed
@@ -46,6 +51,7 @@ export interface IQueue {
 enum ActionType {
   ADD,
   SHIFT,
+  EMPTY
 }
 
 // action to be dispatched
@@ -64,6 +70,9 @@ const jobsReducer = (jobs: Array<Job>, action: Action) => {
       const next = jobs;
       next.shift();
       return next;
+      
+    case ActionType.EMPTY:
+      return [];
 
     default:
       return jobs;
@@ -115,9 +124,13 @@ export default (): IQueue => {
     dispatch({type: ActionType.ADD, job});
   };
 
+  const empty = async () => {
+    dispatch({type: ActionType.EMPTY});
+  };
+
   const onEmpty = (callback: () => void) => {
     setDoneCallback(callback);
   };
 
-  return {addJob, onEmpty, isExecutingTask};
+  return {empty, addJob, onEmpty, isExecutingTask};
 };
