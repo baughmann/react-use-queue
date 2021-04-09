@@ -1,6 +1,6 @@
 {
   "name": "react-use-queue",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "A simple task queue implementation for React",
   "main": "index.tsx",
   "scripts": {
