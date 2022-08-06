@@ -1,4 +1,5 @@
 # React useQueue
+
 ### A simple job-based asynchronous queue for `react` and `react-native`
 
 A very small and basic implementation of an asyncronous queue. It's an easy way to add jobs to a list and add a callback to be fired when all of the jobs are complete.
@@ -13,17 +14,22 @@ First, add it to your project as you normally would.
 
 `import useQueue from "react-use-queue";`
 
-
 Next, simply use the hook as so.
 
 `const Queue = useQueue();`
 
-
 Now, you can add tasks:
+
 ```
   Queue.addJob({
     task: () => doSomething()),
   });
+```
+
+As of `0.5.0` you can also just add callbacks like so
+
+```
+  Queue.addJob(doSomething),
 ```
 
 You can even add promises and do something with their result:
@@ -36,7 +42,7 @@ You can even add promises and do something with their result:
 
 You should think about wrapping the `addJob()` function in a promise:
 
-``` 
+```
   const doSomethingAndReturn = () => {
     return new Promise<string>((resolve, reject) => {
       Queue.addJob({
@@ -45,15 +51,19 @@ You should think about wrapping the `addJob()` function in a promise:
     });
   };
 ```
+
 Which you can then use elsewhere like so...
 
 `const result = await doSomethingAndReturn()`
 
 ### Note
+
 If you're on `react` for the web, you can use this queue in your ServiceWorker to do tasks on a background thread. If you're using `react-native` like me, this will execute on the main JS thread, unless the job you're passing spawns it's own thread, like `react-native-ffmpeg` does for example.
 
 ### TODO
+
 - Add a built in WebWorker option for web-based use
 - Add automated tests
 - Automate deployment to NPM
 - Automate & host example
+- Add arbitrary user data to tasks to allow users to track and organize tasks as they're queued and completed
