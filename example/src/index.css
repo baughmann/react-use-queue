@@ -1,0 +1,89 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30rem;
+}
+
+.App form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.App form .button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 3rem;
+  background-color: rgb(42, 144, 228);
+  margin-bottom: 2rem;
+}
+
+.App form .button-group button {
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: #fff;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.App form .button-group button.active {
+  background-color: rgba(51, 255, 0, 0.5);
+}
+
+.App form input {
+  background-color: rgb(229, 229, 229);
+  border: 1px solid rgb(170, 170, 170);
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.App form button.submit {
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border: none;
+  background-color: rgb(69, 209, 34);
+  border-radius: 2rem;
+  color: rgb(37, 81, 29);
+  font-weight: bolder;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.App .results {
+  width: 100%;
+}
+
+.App .results .list-header {
+    background-color: rgb(226, 226, 226);
+    padding: 1rem;
+}
+
+.App .results ul {
+  list-style: none;
+  width: 100%;
+}

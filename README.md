@@ -9,7 +9,7 @@ While it's not exactly crammed full of features, it's a convenient and lightweig
 
 First, add it to your project as you normally would.
 
-`$ yarn add react-use-queue`
+`$ npm i -s react-use-queue`
 
 `import useQueue from "react-use-queue";`
 
@@ -51,3 +51,9 @@ Which you can then use elsewhere like so...
 
 ### Note
 If you're on `react` for the web, you can use this queue in your ServiceWorker to do tasks on a background thread. If you're using `react-native` like me, this will execute on the main JS thread, unless the job you're passing spawns it's own thread, like `react-native-ffmpeg` does for example.
+
+### TODO
+- Add a built in WebWorker option for web-based use
+- Add automated tests
+- Automate deployment to NPM
+- Automate & host example

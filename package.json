@@ -2,9 +2,15 @@
   "name": "react-use-queue",
   "version": "0.1.3",
   "description": "A simple task queue implementation for React",
-  "main": "index.tsx",
+  "main": "./lib/cjs/index.ts",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/cjs/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:esm": "./node_modules/.bin/tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build": "npm run build:esm && npm run build:cjs",
+    "clean": "rm -rf node_modules package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
@@ -26,5 +32,15 @@
   "bugs": {
     "url": "https://github.com/baughmann/react-use-queue/issues"
   },
-  "homepage": "https://github.com/baughmann/react-use-queue#readme"
+  "homepage": "https://github.com/baughmann/react-use-queue#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.0 || ^17 || ^18",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18"
+  },
+  "files": [
+    "/lib"
+  ]
 }
